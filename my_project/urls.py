@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from book_management import views
+from django.conf import settings
+from django.conf.urls.static import static
+from django.conf.urls import url
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('my-index/', views.index),
-]
+    #path('admin/', admin.site.urls),
+    url(r'^my-index/$', views.index),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
